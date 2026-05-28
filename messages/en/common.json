@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "docs": "Docs",
+    "get-started": "Get Started For Free",
+    "login": "Login",
+    "home-title": "{{n}} - Fast & Secure URL Redirect Management"
+  },
+  "home": {
+    "hero-badge": "✨ 1M+ domains redirected daily",
+    "hero-title": "Your domains.",
+    "hero-subtitle": "Forward your domains instantly and manage all redirects from a real-time dashboard. Enhance your SEO with 301/302 redirects and secure every link with HTTPS."
+  }
+}
