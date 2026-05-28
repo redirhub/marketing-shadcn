@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
+import { safeUrlFor } from "@/sanity/lib/safeImage";
 import { fetchTestimonials } from "@/lib/services/testimonials";
 
 interface TestimonialsSectionProps {
@@ -18,7 +18,7 @@ export default async function TestimonialsSection({ locale = "en" }: Testimonial
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t) => {
-            const avatarUrl = t.avatar ? urlFor(t.avatar).width(80).height(80).url() : null;
+            const avatarUrl = safeUrlFor(t.avatar, { width: 80, height: 80, fallback: "" }) || null;
             return (
               <div key={t._id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col gap-4">
                 <p className="text-gray-700 leading-relaxed text-base">&ldquo;{t.quote}&rdquo;</p>

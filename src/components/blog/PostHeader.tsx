@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { urlFor } from "@/sanity/lib/image";
+import { safeUrlFor } from "@/sanity/lib/safeImage";
 import { normalizeTag, ucfirst } from "@/lib/utils/tagsHelpers";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import type { SanityImageAsset } from "@/types/sanity";
@@ -21,7 +21,7 @@ function localePath(locale: string, path: string) {
 }
 
 export default function PostHeader({ title, publishedAt, readTimeMinutes, tags, image, locale = "en" }: PostHeaderProps) {
-  const imageUrl = image ? urlFor(image).width(1600).height(900).url() : null;
+  const imageUrl = safeUrlFor(image, { width: 1600, height: 900, fallback: "" }) || null;
 
   return (
     <header className="pb-2 pt-20 w-full" style={{ background: "linear-gradient(163deg, #1c6db6 0%, #20a795 86%)" }}>

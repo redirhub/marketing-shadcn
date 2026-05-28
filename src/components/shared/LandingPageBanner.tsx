@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { HeroSection } from "@/types/sanity";
-import { urlFor } from "@/sanity/lib/image";
+import { safeUrlFor } from "@/sanity/lib/safeImage";
 import { URL_DASHBOARD_REGISTER } from "@/config/constant";
 
 const bannerGradients: Record<string, string> = {
@@ -18,7 +18,7 @@ interface LandingPageBannerProps {
 export default function LandingPageBanner({ hero }: LandingPageBannerProps) {
   const gradient = bannerGradients[hero?.bannerStyle ?? "default"] ?? bannerGradients.default;
   const ctaUrl = hero?.ctaPrimary?.url || URL_DASHBOARD_REGISTER;
-  const heroImageUrl = hero?.heroImage ? urlFor(hero.heroImage).width(3000).quality(100).url() : null;
+  const heroImageUrl = safeUrlFor(hero?.heroImage, { width: 3000, height: 1500, fallback: "" }) || null;
   const aspectRatio = (hero?.heroImage as any)?.dimensions?.aspectRatio;
   const imageHeight = aspectRatio ? Math.round(1920 / aspectRatio) : 600;
   const showCTA = !!hero?.ctaPrimary?.label;

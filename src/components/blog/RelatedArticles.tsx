@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { BlogCard } from "./BlogCard";
 import type { PostPreview } from "@/types/sanity";
-import { urlFor } from "@/sanity/lib/image";
+import { safeUrlFor } from "@/sanity/lib/safeImage";
 import { localeUrl } from "@/lib/utils/seo";
 
 interface RelatedArticlesProps {
@@ -34,7 +34,7 @@ export default function RelatedArticles({ posts, locale = "en" }: RelatedArticle
         {posts.slice(0, 3).map((post) => (
           <BlogCard
             key={post._id}
-            imageSrc={post.image ? urlFor(post.image).width(800).height(450).url() : "/assets/images/default.png"}
+            imageSrc={safeUrlFor(post.image, { width: 800, height: 450 })}
             tags={post.tags}
             date={new Date(post.publishedAt).toLocaleDateString(locale, {
               year: "numeric",

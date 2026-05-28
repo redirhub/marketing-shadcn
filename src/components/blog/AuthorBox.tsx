@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
+import { safeUrlFor } from "@/sanity/lib/safeImage";
 
 interface AuthorBoxProps {
   author?: {
@@ -21,7 +21,7 @@ function localePath(locale: string, path: string) {
 export default function AuthorBox({ author, locale = "en" }: AuthorBoxProps) {
   if (!author) return null;
 
-  const avatarUrl = author.image ? urlFor(author.image).width(200).height(200).url() : undefined;
+  const avatarUrl = safeUrlFor(author.image, { width: 200, height: 200, fallback: "" }) || undefined;
   const authorLink = author.slug ? localePath(locale, `/blog/author/${author.slug.current}`) : undefined;
 
   const Avatar = (

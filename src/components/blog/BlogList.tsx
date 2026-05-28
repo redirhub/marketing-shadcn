@@ -1,6 +1,6 @@
 import { BlogCard } from "./BlogCard";
 import { fetchPaginatedPosts } from "@/lib/services/blog";
-import { urlFor } from "@/sanity/lib/image";
+import { safeUrlFor } from "@/sanity/lib/safeImage";
 import type { PostPreview } from "@/types/sanity";
 import { localeUrl } from "@/lib/utils/seo";
 import BlogPagination from "./BlogPagination";
@@ -20,11 +20,13 @@ export default async function BlogList({ currentPage, locale = "en", basePath }:
         {posts?.length > 0 ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {posts.map((post: PostPreview) => (
+              {posts.map((post: PostPreview) => {
+                const imageSrc = safeUrlFor(post.image, { width: 800, height: 450 });
+                return (
                 <BlogCard
                   key={post._id}
-                  imageSrc={post.image ? urlFor(post.image).width(800).height(450).url() : "/assets/images/default.png"}
-                  imageAlt={post.title}
+                  imageSrc={imageSrc}
+                  imageAlt={post.title || "Blog post image"}
                   tags={post.tags}
                   date={new Date(post.publishedAt).toLocaleDateString(locale, {
                     year: "numeric",
@@ -35,7 +37,8 @@ export default async function BlogList({ currentPage, locale = "en", basePath }:
                   excerpt={post.excerpt}
                   link={localeUrl(locale, `/blog/${post.slug.current}`)}
                 />
-              ))}
+                );
+              })}
             </div>
             <BlogPagination currentPage={currentPage} totalPages={totalPages} basePath={basePath} />
           </>

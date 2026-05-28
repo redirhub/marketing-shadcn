@@ -1,5 +1,5 @@
 import { BlogCard } from "@/components/blog/BlogCard";
-import { urlFor } from "@/sanity/lib/image";
+import { safeUrlFor } from "@/sanity/lib/safeImage";
 import { localeUrl } from "@/lib/utils/seo";
 import type { PostPreview } from "@/types/sanity";
 
@@ -19,7 +19,7 @@ export default function BlogSection({ locale, posts }: BlogSectionProps) {
           {posts.map((post) => (
             <BlogCard
               key={post._id}
-              imageSrc={post.image ? urlFor(post.image).width(800).height(450).url() : "/assets/images/default.png"}
+              imageSrc={safeUrlFor(post.image, { width: 800, height: 450 })}
               imageAlt={post.title}
               tags={post.tags}
               date={new Date(post.publishedAt).toLocaleDateString(locale, {

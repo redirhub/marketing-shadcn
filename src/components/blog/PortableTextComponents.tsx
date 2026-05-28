@@ -1,6 +1,6 @@
 import type { PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
+import { safeUrlFor } from "@/sanity/lib/safeImage";
 
 export const portableTextComponents = (): PortableTextComponents => {
   let headingIndex = -1;
@@ -72,7 +72,7 @@ export const portableTextComponents = (): PortableTextComponents => {
     types: {
       image: ({ value }) => {
         if (!value?.asset) return null;
-        const url = urlFor(value).width(800).url();
+        const url = safeUrlFor(value, { width: 800, height: 450 });
         return (
           <div className="my-8 rounded-xl overflow-hidden">
             <div className="relative w-full aspect-[16/9]">
