@@ -4,8 +4,11 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Suspense } from "react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
+import NProgressBar from "@/components/shared/NProgressBar";
 import "../globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -45,10 +48,14 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${plusJakarta.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-white text-brand-charcoal antialiased">
         <NextIntlClientProvider messages={messages}>
+          <Suspense fallback={null}>
+            <NProgressBar />
+          </Suspense>
           <Nav />
           {children}
           <Footer locale={locale} />
         </NextIntlClientProvider>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
       </body>
     </html>
   );
