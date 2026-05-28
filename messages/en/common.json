@@ -7,7 +7,12 @@
     "get-started": "Get Started For Free",
     "login": "Login",
     "home-title": "RedirHub - Fast & Secure URL Redirect Management",
-    "learn-more": "Learn More"
+    "learn-more": "Learn More",
+    "support": "Support",
+    "changelog": "Changelog",
+    "toc-title": "Table of Contents",
+    "related-articles": "Related Articles",
+    "view-all-articles": "View All Articles"
   },
   "home": {
     "hero-badge": "✨ 1M+ domains redirected daily",
@@ -125,6 +130,33 @@
     "faq-q7": "Can multiple team members manage redirects?",
     "faq-a7": "Yes. RedirHub supports role-based team access with full admin, edit-only, and view-only roles. Access can be granted or revoked at the domain level, so each team member only sees what they need.",
     "faq-more": "Still have questions?",
-    "faq-docs-link": "Read the documentation"
+    "faq-docs-link": "Read the documentation",
+    "mins-read": "{minutes} mins read"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "main-title": "That Scales With Your Needs",
+    "subtitle": "Choose the plan that fits your needs and scale as you grow",
+    "billing-monthly": "Monthly",
+    "billing-annually": "Annually",
+    "save-badge": "Save 20%",
+    "tab-links-management": "Links Management",
+    "tab-monitor": "Monitor",
+    "faq-title": "Frequently Asked Questions"
+  },
+  "blog": {
+    "banner-subtitle": "Gain Industry Insights",
+    "banner-title": "Read our blog today",
+    "banner-search-title": "Search \"{term}\"",
+    "banner-tag-title": "{tag}",
+    "latest-articles": "Latest Articles",
+    "search-placeholder": "Search...",
+    "clear-search": "Clear search",
+    "other-topics": "More",
+    "no-posts": "No posts available yet. Check back soon!",
+    "no-results": "No results!",
+    "sorry-no-results": "Sorry we couldn't find anything.",
+    "try-again": "Try another search!",
+    "results": "{count, plural, one {# Result} other {# Results}}"
   }
 }

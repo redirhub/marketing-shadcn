@@ -4,6 +4,8 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import Nav from "@/components/layout/Nav";
+import Footer from "@/components/layout/Footer";
 import "../globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -43,7 +45,9 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${plusJakarta.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-white text-brand-charcoal antialiased">
         <NextIntlClientProvider messages={messages}>
+          <Nav />
           {children}
+          <Footer locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

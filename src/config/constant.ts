@@ -1,0 +1,8 @@
+export const APP_NAME = process.env.NEXT_PUBLIC_SITE_NAME || 'RedirHub'
+export const APP_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.redirhub.com'
+export const API_BASE = process.env.API_BASE || 'https://api.redirhub.com'
+export const SOCIAL_HANDLE = process.env.NEXT_PUBLIC_SOCIAL_HANDLE || 'redirhub'
+export const URL_OG_IMAGE = process.env.NEXT_PUBLIC_URL_OG_IMAGE || 'https://cdn.sanity.io/images/91gfp0x5/production/107929b3a8e3ab875468edaae6d92ea2f958fa8a-1200x630.png'
+export const URL_DASHBOARD = process.env.NEXT_PUBLIC_DASHBOARD_BASE || 'https://dash.redirhub.com'
+export const URL_DASHBOARD_LOGIN = URL_DASHBOARD + '/login'
+export const URL_DASHBOARD_REGISTER = process.env.NEXT_PUBLIC_REGISTER_URL || '#'
