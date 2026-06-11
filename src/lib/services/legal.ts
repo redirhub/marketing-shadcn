@@ -23,3 +23,10 @@ export async function fetchLegalDocumentTranslations(slug: string) {
   const query = `*[_type == "legal" && slug.current == $slug]{ _id, locale, title, slug, footer }`
   return client.fetch(query, { slug })
 }
+
+export async function fetchFooterLegalPages(locale: string = 'en') {
+  const query = `*[_type == "legal" && locale == $locale && footer == true] | order(title asc) {
+    _id, title, slug, locale, publishedAt
+  }`
+  return client.fetch(query, { locale })
+}

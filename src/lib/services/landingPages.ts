@@ -27,3 +27,10 @@ export async function fetchLandingPageTranslations(slug: string) {
   }`
   return client.fetch(query, { slug })
 }
+
+export async function fetchFooterLandingPages(locale: string = 'en') {
+  const query = `*[_type == "landingPage" && locale == $locale && footer == true] | order(title asc) {
+    _id, title, slug, locale, publishedAt
+  }`
+  return client.fetch(query, { locale })
+}
